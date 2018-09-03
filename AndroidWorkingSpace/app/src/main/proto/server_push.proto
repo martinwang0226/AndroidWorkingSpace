@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+
+option java_package         = "com.letzgo.carmonitor";
+option java_outer_classname = "ServerPushProto";
+
+package carmonitor;
+
+import "duration.proto";
+import "timestamp.proto";
+
+service PushService {
+    rpc push (PushPayload) returns (PushSummary);
+}
+
+message PushPayload{
+    string command = 1;
+    google.protobuf.Duration ttl        = 2;
+    google.protobuf.Timestamp timestamp = 3;
+    repeated string targets             = 4;
+}
+
+message PushSummary{
+    int32 total = 1;
+    repeated string failedTargets = 2;
+}

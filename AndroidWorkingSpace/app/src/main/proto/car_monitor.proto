@@ -1,0 +1,108 @@
+syntax = "proto3";
+
+
+option java_package         = "com.letzgo.carmonitor";
+option java_outer_classname = "CarMonitorProto";
+
+package carmonitor;
+
+import "duration.proto";
+import "timestamp.proto";
+
+service FeedService {
+    rpc feed (stream Status) returns (stream Command);
+}
+
+message Status {
+    enum Type{
+        LOCATION      = 0; // 位置
+        OBD           = 1; // OBD，暂时无用
+        COMMAND_REPLY = 2; // 应答服务器消息
+        SYNC          = 3; // 同步服务器时间
+        REPORT        = 4; // 上报数据
+    }
+    Type type                           = 1;
+    google.protobuf.Timestamp timestamp = 2;
+    oneof status{
+        LocationStatus location   = 3;
+        ObdStatus obd             = 4;
+        CommandReply commandReply = 5;
+        Sync sync                 = 8;
+        Report report             = 9;
+    }
+    string carNo                   = 6; //车牌号
+    google.protobuf.Duration delay = 7; //消息延时，重发消息的时候需要设置，以对齐时钟
+}
+
+message CommandReply{
+    google.protobuf.Timestamp reply = 1;
+}
+
+message ObdStatus {
+    int32 oil     = 1;
+    int32 mileage = 2;
+    int32 gear    = 3;
+    int32 speed   = 4;
+}
+
+message LocationStatus{
+    double longitude = 1; //经纬度
+    double latitude  = 2; //经纬度
+    Load load        = 3; //载客状态
+    enum Load {
+        EMPTY = 0;//空车
+        HEAVY = 1;//重车
+        E2H   = 2;//空车转重车
+        H2E   = 3;//重车转空车
+    }
+}
+
+message Sync{
+    string carNo = 1; // 车牌号
+}
+
+message Report{
+    int32 totalMessages      = 1; // 总消息数量
+    int32 successfulMessages = 2; // 成功数量
+    int32 connectTimes       = 3; // 发起连接次数
+    int32 disconnectTimes    = 4; // 断开连接次数
+}
+
+message Command {
+    enum Name{
+        ORDER        = 0; // 派单，暂时无用
+        NOTE         = 1; // 通知，暂时无用
+        STATUS_REPLY = 2; // 应答客户端
+        REPORT       = 3; // 上报数据
+        SYNC_REPLY   = 4; // 应答SYNC请求
+    }
+    Name name                           = 1;
+    google.protobuf.Timestamp timestamp = 2; //服务器时间
+    oneof command{
+        NoteCommand note        = 3;
+        StatusReply statusReply = 4;
+        OrderCommand order      = 5;
+        ReportCommand report    = 6;
+        SyncReply syncReply     = 7;
+    }
+}
+
+message StatusReply {
+    google.protobuf.Timestamp reply = 1;
+}
+
+message SyncReply {
+    google.protobuf.Timestamp reply = 1;
+}
+
+message OrderCommand{
+    string id     = 1;
+    int32 expired = 2;
+}
+
+message NoteCommand{
+    string content = 1;
+    string title   = 2;
+}
+
+message ReportCommand{}
