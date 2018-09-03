@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by martinwang on 2018/9/3.
+ * Created by martinwang on 2017/9/13.
  */
 
 public class MsgModel {

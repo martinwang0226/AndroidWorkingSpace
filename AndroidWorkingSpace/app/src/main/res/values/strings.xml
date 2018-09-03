@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AndroidWorkingSpace</string>
+
+    <string name="low_size">空间不足，请清理</string>
+
+
 </resources>

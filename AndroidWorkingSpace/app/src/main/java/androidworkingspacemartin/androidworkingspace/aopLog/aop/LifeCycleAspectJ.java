@@ -11,7 +11,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import androidworkingspacemartin.androidworkingspace.aopLog.model.MsgModel;
 
 /**
- * Created by martinwang on 2018/9/3.
+ * Created by martinwang on 2017/9/13.
  */
 
 @Aspect

@@ -1,10 +1,10 @@
 package androidworkingspacemartin.androidworkingspace.aopLog.model;
 
 /**
- * Created by martinwang on 2018/9/3.
+ * Created by martinwang on 2017/9/14.
  */
 
-class EventType {
+public class EventType {
     /**
      * 设备信息
      */
