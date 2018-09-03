@@ -3,4 +3,20 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--首页订单色值-->
+    <color name="map_night_bg_middle">#0d242f</color>
+    <color name="map_home_viptype">#af7536</color>
+    <color name="map_black">#000000</color>
+    <color name="map_white">#FFFFFF</color>
+    <color name="map_transparent">#00000000</color>
+    <!--分割线颜色-->
+    <color name="map_color_seprator"> #d5d5d5</color>
+    <color name="map_color_while_mapbg">#ffffff</color>
+    <color name="map_color_niaght_mapbg">#000000</color>
+    <color name="map_button_actual">#099499</color>
+    <color name="map_night_line_bg">#000000</color>
+    <color name="map_button_cancel">#6638ffea</color>
+    <color name="map_button_close">#cc000000</color>
+    <color name="map_button_close_text">#cc38ffea</color>
 </resources>
