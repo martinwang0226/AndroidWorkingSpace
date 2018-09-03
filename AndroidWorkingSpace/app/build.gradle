@@ -1,8 +1,11 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.protobuf'
 
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
+
+
 
 android {
     compileSdkVersion 26
@@ -22,6 +25,33 @@ android {
     }
 }
 
+def grpcVersion = '1.5.0'
+
+//protobuf {
+//    protoc {
+//        artifact = 'com.google.protobuf:protoc:3.3.0'
+//    }
+//    plugins {
+//        javalite {
+//            artifact = "com.google.protobuf:protoc-gen-javalite:3.0.0"
+//        }
+//        grpc {
+//            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
+//        }
+//    }
+//    generateProtoTasks {
+//        all().each { task ->
+//            task.plugins {
+//                javalite {}
+//                grpc {
+//                    // Options added to --grpc_out
+//                    option 'lite'
+//                }
+//            }
+//        }
+//    }
+//}
+
 dependencies {
     androidTestCompile('com.android.support:support-annotations:26.1.0') {
         force = true
@@ -37,8 +67,16 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    //AOP
     implementation 'org.aspectj:aspectjrt:1.8.9'
     implementation 'com.squareup.okhttp3:okhttp:3.4.1'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     testImplementation 'junit:junit:4.12'
+
+    //RPC
+    implementation "io.grpc:grpc-okhttp:${grpcVersion}"
+    implementation "io.grpc:grpc-protobuf-lite:${grpcVersion}"
+    implementation "io.grpc:grpc-stub:${grpcVersion}"
+
+
 }
