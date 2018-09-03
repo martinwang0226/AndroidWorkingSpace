@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#6000">
+
+    <!--取消-->
+    <!-- 【必设】取消按钮tag：beta_cancel_button-->
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:tag="beta_cancel_button"
+        android:visibility="gone" />
+
+    <!--对话框-->
+    <LinearLayout
+        android:id="@+id/ly_dialog"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <!--自定义banner-->
+        <!-- 【选设】升级banner图片tag: beta_upgrade_banner -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:tag="beta_upgrade_banner" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_upgrade_head">
+
+            <ImageView
+                android:id="@+id/iv_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:padding="8dp"
+                android:src="@drawable/icon_upgrade_close"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_upgrade_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <!--版本号-->
+            <!-- 【必设】升级标题控件tag：beta_title-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:paddingLeft="14dp"
+                android:paddingTop="12dp"
+                android:tag="beta_title"
+                android:text="title"
+                android:textColor="#3c3c3c"
+                android:textSize="15sp" />
+
+            <!--版本更新信息 & 更新说明信息-->
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp"
+                    android:paddingTop="12dp">
+
+                    <!--版本更新信息-->
+                    <!-- 【必设】升级信息控件tag：beta_upgrade_info-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:tag="beta_upgrade_info"
+                        android:textColor="#757575"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:text="@string/strUpgradeDialogFeatureLabel"
+                        android:textColor="#273238"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
+
+                    <!--更新说明信息-->
+                    <!-- 【必设】更新属性控件tag：beta_upgrade_feature-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="6dp"
+                        android:tag="beta_upgrade_feature"
+                        android:text="feature\nsad"
+                        android:textColor="#575859"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </ScrollView>
+
+            <!--确认 和 取消 底部按钮-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal"
+                android:paddingBottom="6dp"
+                android:paddingTop="12dp">
+
+                <!--更新-->
+                <!-- 【必设】确认按钮tag：beta_confirm_button-->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_round_blue_light"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:tag="beta_confirm_button"
+                    android:text="confirm"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
